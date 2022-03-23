@@ -1,0 +1,124 @@
+@media screen and (max-width: $breakpoint-xl) {
+    .hide2 {
+        display: none !important;
+    }
+    .hide {
+        display: block !important;
+    }
+    .hero-text-container {
+        width: 60% !important;
+        .hero-headline {
+            font-size: 5vw !important;
+            letter-spacing: 0.4em !important;
+        }
+        .hero-headline2 {
+            font-size: 3.5vw !important;
+            letter-spacing: 0.25em !important;
+        }
+        .hero-text {
+            font-size: 1.5vw !important;
+            letter-spacing: 0.2em !important;
+        }
+    }
+    .social-media {
+        width: 20% !important;
+    }
+    .navbar-index {
+        padding: 10px !important;
+        min-height: 150px;
+        .nav-link>.btn {
+            width: 150px !important;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-l) {
+    .table-img {
+        width: 60px !important;
+        height: 80px !important;
+    }
+}
+
+@media screen and (max-width: $breakpoint-m) {
+    .hero-text-container {
+        .hero-headline {
+            font-size: 6vw !important;
+        }
+        .hero-headline2 {
+            font-size: 4vw !important;
+        }
+        .hero-text {
+            font-size: 1.7vw !important;
+        }
+    }
+    .main-footer {
+        .social-headline {
+            font-size: 1em;
+            letter-spacing: 0.2em;
+        }
+        .social-media {
+            width: 30% !important;
+            .icon {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        .footer-text {
+            font-size: 0.8em;
+        }
+    }
+    .navbar-index {
+        .nav-logo {
+            font-size: 2em !important;
+        }
+        .nav-logo-img {
+            width: 70px !important;
+            height: 50px !important;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-s) {
+    .hero-text-container {
+        width: 100% !important;
+        .hero-headline {
+            font-size: 7vw !important;
+        }
+        .hero-headline2 {
+            font-size: 5vw !important;
+        }
+        .hero-text {
+            font-size: 2.3vw !important;
+        }
+    }
+    .navbar-index {
+        padding: 5px !important;
+        min-height: 100px;
+        .nav-logo {
+            font-size: 1.5em !important;
+        }
+        .nav-logo-img {
+            width: 60px !important;
+            height: 40px !important;
+        }
+    }
+    .cover {
+        display: none;
+    }
+    td>div>a>.btn {
+        width: 60px !important;
+        font-size: 0.5em !important;
+    }
+}
+
+@media screen and (max-width: $breakpoint-xs) {
+    .navbar-index {
+        .nav-logo {
+            font-size: 4vw !important;
+        }
+        .nav-logo-img {
+            width: 30px !important;
+            height: 20px !important;
+        }
+    }
+}
