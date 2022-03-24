@@ -121,6 +121,15 @@ tr > td > div > a > .btn {
   height: 100px;
 }
 
+.img-thumbnail {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
 @media screen and (max-width: 992px) {
   .hide2 {
     display: none !important;

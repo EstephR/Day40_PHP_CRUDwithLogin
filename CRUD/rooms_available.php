@@ -56,7 +56,7 @@ mysqli_close($connect);
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-5">
                 <a class="nav-link" href="update_user.php?id=<?php echo $_SESSION['user'] ?>"><button class="btn btn-warning p-3">Update Profile</button></a>
-                <a class="nav-link" href="logout.php?logout"><button class="btn btn-success p-3">Log out</button></a>
+                <a class="nav-link" href="logout.php?logout"><button class="btn btn-outline-danger p-3">Log out</button></a>
             </div>
             </div>
         </div>

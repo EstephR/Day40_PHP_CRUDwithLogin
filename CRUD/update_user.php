@@ -1,8 +1,25 @@
 <?php
+session_start();
+
+// if session is not set this will redirect to login page
+if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+  header("Location: login.php");
+  exit;
+}
+
 require_once "components/db_connect.php";
 require_once 'components/file_upload.php';
 
+//GET Admin Data for navbar in case site is accessed by an admin
+if(isset($_SESSION["adm"])) {
+    $sql_adm = "SELECT * FROM users WHERE id = {$_SESSION['adm']}";
+    $result_adm = mysqli_query($connect, $sql_adm);
+    if (mysqli_num_rows($result_adm) == 1) {
+        $row = mysqli_fetch_assoc($result_adm);
+    } 
+}
 
+//Get User Data
 if($_GET["id"]) {
     $id = $_GET["id"];
     $sql = "SELECT * FROM users WHERE id = $id";
@@ -48,6 +65,23 @@ if (isset($_POST["submit"])) {
       header("refresh:3;url=home.php?id={$id}");
   }
 }
+
+
+//Asign either User or Admin data to the variables which are shown in the navbar
+if(isset($_SESSION["user"])) {
+    $picture = $data['picture'];
+    $nav_name = $data['fname'];
+    $room_btn_name = "Book a Room";
+    $room_btn_link = "rooms_available.php";
+} else {
+    $picture = $row['picture'];
+    $nav_name = "Admin {$row['fname']}";
+    $room_btn_name = "Update Rooms";
+    $room_btn_link = "update_rooms.php";
+}
+
+
+
 mysqli_close($connect);
 ?>
 
@@ -66,20 +100,20 @@ mysqli_close($connect);
     <nav class="navbar navbar-admin p-5 navbar-expand-lg navbar-dark bg-light mb-5">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="home.php">
-            <img class="userImage img-thumbnail rounded-circle" src="../img/<?php echo $data['picture']; ?>" alt="<?php echo $data['fname']; ?>" width="80" height="80" class="d-inline-block align-text-top">
-            <div class="text-white ms-3">Hi <?php echo $data['fname']; ?></div></a>
+            <img class="userImage img-thumbnail rounded-circle" src="../img/<?php echo $picture ?>" alt="<?php echo $nav_name; ?>" width="80" height="80" class="d-inline-block align-text-top">
+            <div class="text-white ms-3">Hello, <?php echo $nav_name; ?></div></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-5">
-                <a class="nav-link" href="rooms_available.php"><button class="btn btn-success p-3">Book a Room</button></a>
+                <a class="nav-link" href="<?=$room_btn_link?>"><button class="btn btn-success p-3"><?=$room_btn_name ?></button></a>
                 <a class="nav-link" href="logout.php?logout"><button class="btn btn-outline-danger p-3">Log out</button></a>
             </div>
             </div>
         </div>
     </nav>
-
+              
     <div class="container">
 
     <div class="<?php echo $class; ?>" role="alert">
